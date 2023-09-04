@@ -10,7 +10,7 @@ height = 224
 target_size = (width, height)
 
 #loading models
-model = tf.keras.models.load_model('model/potato-identificationnewV2.h5')
+model = tf.keras.models.load_model('models/potato-identificationnewV2.h5')
 
 #image preprocessing function
 def preprocessing_function(img):
