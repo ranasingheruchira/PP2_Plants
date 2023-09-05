@@ -41,7 +41,7 @@ function App() {
           >
             A Smart Solution <br />
             To Detect <br />
-            Plant Deseases..
+            Plant Diseases..
           </Typography>
         </Grid>
         {/* getting started button */}
