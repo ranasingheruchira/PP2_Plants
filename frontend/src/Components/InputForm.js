@@ -43,12 +43,13 @@ export default function InputForm() {
 
   return (
     <div id="input_form_div">
-      <PopUpDialog
-        isOpen={isSumbitted}
-        changeIsOpen={changeIsSubmitted}
-        data={data}
-      />
-
+      {isSumbitted && (
+        <PopUpDialog
+          isOpen={isSumbitted}
+          changeIsOpen={changeIsSubmitted}
+          data={data}
+        />
+      )}
       <form onSubmit={onSubmit}>
         <label className={styles.form_label}>Detection Type :</label>
         <br />

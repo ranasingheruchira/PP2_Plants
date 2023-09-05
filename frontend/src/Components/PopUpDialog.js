@@ -23,6 +23,10 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
     changeIsOpen(false);
   };
 
+  const percentages = Object.entries(data.prediction);
+
+  // console.log(percentages[1]);
+
   return (
     <div>
       <BootstrapDialog
@@ -45,23 +49,36 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
         >
           <CloseIcon />
         </IconButton>
+
         <DialogContent dividers sx={{ backgroundColor: "#7af5c0" }}>
-          <h1>Hello</h1>
-          <Typography gutterBottom variant="h3">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+          <h1>Image Identified As :</h1>
+          <Typography gutterBottom variant="h5">
+            <ul>
+              <li>{data.identified}</li>
+            </ul>
+          </Typography>
+          <h1>Identification Percentage :</h1>
+          <Typography gutterBottom variant="h5">
+            <ul>
+              <li>{data.identifiedPercentage.slice(0, 5)}%</li>
+            </ul>
+          </Typography>
+          <h1>Other Posibilities :</h1>
+          <Typography gutterBottom variant="h5">
+            <ul>
+              {percentages.map((item) => {
+                return (
+                  <li key={item[0]}>
+                    {item[0] + " : " + item[1].slice(0, 5)}%
+                  </li>
+                );
+              })}
+            </ul>
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
-            Save changes
+            Close
           </Button>
         </DialogActions>
       </BootstrapDialog>

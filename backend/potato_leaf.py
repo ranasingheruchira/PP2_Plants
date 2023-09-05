@@ -38,8 +38,8 @@ def analyze_potato_leaf(file_directory):
 
     # values to be returned by API
     maximumValue = maximumValue*100
-    predictedDisease = "Unidentified"
-    diseasePercentage = "Unidentified"
+    predictedDisease = "Unidentified Image"
+    diseasePercentage = "Unidentified Percentage"
     diseaseWithMaxPercentage = diseases[indexOfMax]
 
     # only returns values with more than 65% accuracy
