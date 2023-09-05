@@ -6,7 +6,7 @@ import styles from "./InputForm.module.css";
 let data = {};
 
 export default function InputForm() {
-  //selects <input> tag from html
+  //selects <input> tag from html document
   const imageInput = useRef();
 
   //state of the components
@@ -19,31 +19,32 @@ export default function InputForm() {
     event.preventDefault();
     const formData = new FormData();
     formData.append("img", imageInput.current.files[0]);
-    upload(formData, radioURL, changePredictionData);
+    upload(formData, radioURL, changePredictionData); //sends data to server
   };
 
   //this is used to change the data in the pop up message
+  //also loads the pop up message once data is recieved from the server
 
   const changePredictionData = function (newData) {
     data = newData;
     changeIsSubmitted(true);
   };
 
-  //this is used to display the image name when selected from device
+  //this is used to display the selected image name on the form
   const imageAddHandler = function (event) {
     let filePath = event.target.value.split("\\");
     let fileName = filePath[filePath.length - 1];
     changeFileName(fileName);
   };
 
-  //used to change the url path(potato,cucumber,weed)
+  //used to change the url path depending on optato, cucumber or weed
   const onRadioChange = function (event) {
     changeRadioURL(event.target.value);
   };
 
   return (
     <div id="input_form_div">
-      {isSumbitted && (
+      {isSumbitted && ( //checks user submitted the form or not. If submitted pop up appears
         <PopUpDialog
           isOpen={isSumbitted}
           changeIsOpen={changeIsSubmitted}
@@ -54,7 +55,7 @@ export default function InputForm() {
         <label className={styles.form_label}>Detection Type :</label>
         <br />
 
-        {/* radio group */}
+        {/* radio group for selecting potato,cucumber or weed*/}
         <div className={styles.radio_group}>
           <label className={styles.container}>
             Potato
@@ -89,10 +90,12 @@ export default function InputForm() {
         </div>
         <br />
 
+        {/* "Add Image Here" Label */}
         <label className={styles.form_label} id={styles.from_label_image}>
           Add Image Here :
         </label>
         <br />
+        {/* Image upload area */}
         <div className={styles.image_input_container}>
           <label
             htmlFor={styles.input_image}
@@ -108,6 +111,7 @@ export default function InputForm() {
             onChange={imageAddHandler}
           />
         </div>
+        {/* Submit Button */}
         <br />
         <input type="submit" value="Submit" className={styles.btn_submit} />
       </form>

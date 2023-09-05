@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 function App() {
   const animationContainer = useRef();
 
+  //renders the animation
   useEffect(() => {
     lottie.loadAnimation({
       container: animationContainer.current,
@@ -21,12 +22,15 @@ function App() {
 
   return (
     <Grid container>
-      <Grid xs={12} sx={{ height: "5vh", bgcolor: "orange" }} />
+      {/* top navbar */}
+      <Grid xs={12} sx={{ height: "7vh", bgcolor: "#00AFAB" }} />
+      {/* displays the animations */}
       <Grid xs={5} sx={{ paddingLeft: "100px", paddingTop: "0px" }}>
         <div ref={animationContainer} style={{ height: "500px" }}></div>
       </Grid>
       <Grid xs={7}>
         <Grid xs={12}>
+          {/* Side title */}
           <Typography
             sx={{
               fontFamily: "Poppins, sans-serif",
@@ -40,6 +44,7 @@ function App() {
             Plant Deseases..
           </Typography>
         </Grid>
+        {/* getting started button */}
         <Grid xs={12} sx={{ marginTop: "0px", paddingTop: "0px" }}>
           <a href="#input_form_div">
             <button className="btn-get-started">Get Started.</button>
@@ -47,13 +52,15 @@ function App() {
         </Grid>
       </Grid>
       <Grid xs={2}></Grid>
+      {/* Input form */}
       <Grid
         xs={7}
         sx={{
-          backgroundImage: "linear-gradient(to right, #fc7272 70%, white)",
+          backgroundImage: "linear-gradient(to right, #00AFAB 80%, white)",
           borderRadius: "40px",
         }}
       >
+        {/* renders input form */}
         <InputForm />
       </Grid>
       <Grid xs={3}></Grid>
