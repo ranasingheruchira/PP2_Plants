@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { upload } from "../API/API";
 import PopUpDialog from "./PopUpDialog";
+import styles from "./InputForm.module.css";
 
 let data = {};
 
@@ -10,6 +11,7 @@ export default function InputForm() {
 
   //state of the components
   const [isSumbitted, changeIsSubmitted] = useState(false);
+  const [fileName, changeFileName] = useState("Click to Add Image");
 
   //form submit handler
   const onSubmit = function (event) {
@@ -26,6 +28,18 @@ export default function InputForm() {
     changeIsSubmitted(true);
   };
 
+  //this is used to display the image name when selected from device
+  const imageAddHandler = function (event) {
+    let filePath = event.target.value.split("\\");
+    let fileName = filePath[filePath.length - 1];
+    // console.log(fileName);
+    changeFileName(fileName);
+  };
+
+  const onRadioChange = function (event) {
+    console.log("changed");
+  };
+
   return (
     <div id="input_form_div">
       <PopUpDialog
@@ -33,11 +47,52 @@ export default function InputForm() {
         changeIsOpen={changeIsSubmitted}
         data={data}
       />
+
       <form onSubmit={onSubmit}>
-        <h1>Add Your Image Here</h1>
-        <label>Potato Leaf Image</label>
-        <input type="file" accept="image/*" ref={imageInput} id="test" />
-        <input type="submit" value="Submit" />
+        <label className={styles.form_label}>Detection Type :</label>
+        <br />
+
+        {/* radio group */}
+        <div className={styles.radio_group}>
+          <label className={styles.container}>
+            Potato
+            <input type="radio" name="radio" onChange={onRadioChange} />
+            <span className={styles.checkmark}></span>
+          </label>
+          <label className={styles.container}>
+            Cucumber
+            <input type="radio" name="radio" onChange={onRadioChange} />
+            <span className={styles.checkmark}></span>
+          </label>
+          <label className={styles.container}>
+            Weed
+            <input type="radio" name="radio" onChange={onRadioChange} />
+            <span className={styles.checkmark}></span>
+          </label>
+        </div>
+        <br />
+
+        <label className={styles.form_label} id={styles.from_label_image}>
+          Add Image Here :
+        </label>
+        <br />
+        <div className={styles.image_input_container}>
+          <label
+            htmlFor={styles.input_image}
+            className={styles.add_Image_label}
+          >
+            {fileName}
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            ref={imageInput}
+            id={styles.input_image}
+            onChange={imageAddHandler}
+          />
+        </div>
+        <br />
+        <input type="submit" value="Submit" className={styles.btn_submit} />
       </form>
     </div>
   );
