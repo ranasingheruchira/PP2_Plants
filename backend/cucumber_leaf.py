@@ -15,15 +15,6 @@ diseases = ["Anthracnose", "Bacterial Wilt",
 # loading model
 model = tf.keras.models.load_model(
     'models/cucumber_detector_transfer_learned.h5')
-model.compile(
-    optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
-    loss='categorical_crossentropy',
-    metrics=[
-        tf.keras.metrics.CategoricalAccuracy(name='accuracy'),
-        tf.keras.metrics.Precision(name='precision'),
-        tf.keras.metrics.Recall(name='recall'),
-        tf.keras.metrics.AUC(name='auc')
-    ])
 
 # prediction function definition
 

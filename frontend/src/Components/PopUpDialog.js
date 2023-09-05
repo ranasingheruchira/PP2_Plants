@@ -60,7 +60,11 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
           <h1>Identification Percentage :</h1>
           <Typography gutterBottom variant="h5">
             <ul>
-              <li>{data.identifiedPercentage.slice(0, 5)}%</li>
+              <li>
+                {isNaN(Number(data.identifiedPercentage))
+                  ? data.identifiedPercentage
+                  : data.identifiedPercentage.slice(0, 5) + "%"}
+              </li>
             </ul>
           </Typography>
           <h1>Other Posibilities :</h1>
