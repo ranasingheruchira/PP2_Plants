@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { upload } from "../API/API";
-import CustomizedDialogs from "./Dialog";
+import PopUpDialog from "./PopUpDialog";
 
 let data = {};
 
@@ -9,7 +9,7 @@ export default function InputForm() {
   const imageInput = useRef();
 
   //state of the components
-  const [isOpen, changeIsOpen] = useState(false);
+  const [isSumbitted, changeIsSubmitted] = useState(false);
 
   //form submit handler
   const onSubmit = function (event) {
@@ -23,18 +23,18 @@ export default function InputForm() {
 
   const changePredictionData = function (newData) {
     data = newData;
-    changeIsOpen(true);
+    changeIsSubmitted(true);
   };
 
   return (
-    <div>
-      <CustomizedDialogs
-        isOpen={isOpen}
-        changeIsOpen={changeIsOpen}
+    <div id="input_form_div">
+      <PopUpDialog
+        isOpen={isSumbitted}
+        changeIsOpen={changeIsSubmitted}
         data={data}
       />
       <form onSubmit={onSubmit}>
-        <h1>{isOpen.toString()}</h1>
+        <h1>Add Your Image Here</h1>
         <label>Potato Leaf Image</label>
         <input type="file" accept="image/*" ref={imageInput} id="test" />
         <input type="submit" value="Submit" />

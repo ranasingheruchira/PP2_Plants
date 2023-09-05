@@ -1,9 +1,9 @@
-// import "./App.css";
+import "./App.css";
 import { useRef, useEffect } from "react";
 import InputForm from "./Components/InputForm";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import lottie from "lottie-web";
-import animation from "./lottie_2.json";
+import animation from "./lottie_1.json";
 import { Typography } from "@mui/material";
 
 function App() {
@@ -20,33 +20,36 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Grid container>
-        <Grid item xs={12} sx={{ bgcolor: "#abedd9", height: "8vh" }}>
-          Hello
+    <Grid container>
+      <Grid item xs={12} sx={{ height: "8vh", bgcolor: "orange" }} />
+      <Grid item xs={5} sx={{ paddingLeft: "100px", paddingTop: "0px" }}>
+        <div ref={animationContainer} style={{ height: "500px" }}></div>
+      </Grid>
+      <Grid item xs={7}>
+        <Grid item xs={12}>
+          <Typography
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              fontSize: "70px",
+              paddingTop: "10vh",
+              paddinLeft: "10%",
+            }}
+          >
+            A Smart Solution <br />
+            To Detect <br />
+            Plant Deseases..
+          </Typography>
         </Grid>
-        <Grid item xs={6} sx={{ paddingLeft: "20px" }}>
-          <div ref={animationContainer}></div>
-        </Grid>
-        <Grid item xs={6} sx={{ bgcolor: "#cfe8fc" }}>
-          <Grid item xs={12} sx={{ bgcolor: "white", height: "50vh" }}>
-            <Typography
-              sx={{
-                fontFamily: "Poppins, sans-serif",
-                fontSize: "90px",
-                color: "#00ff99",
-              }}
-            >
-              The Farmers App
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sx={{ bgcolor: "green", height: "50vh" }}></Grid>
-        </Grid>
-        <Grid>
-          <InputForm></InputForm>
+        <Grid item xs={12} sx={{ marginTop: "0px", paddingTop: "0px" }}>
+          <a href="#input_form_div">
+            <button className="btn-get-started">Get Started.</button>
+          </a>
         </Grid>
       </Grid>
-    </div>
+      <Grid item xs={12} sx={{ bgcolor: "orange" }}>
+        <InputForm />
+      </Grid>
+    </Grid>
   );
 }
 

@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedDialogs({ isOpen, changeIsOpen, data }) {
+export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
   const handleClose = () => {
     changeIsOpen(false);
   };
