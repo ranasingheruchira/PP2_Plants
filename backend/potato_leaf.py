@@ -6,6 +6,8 @@ import numpy as np
 width = 224
 height = 224
 
+diseases = ['Early Blight Disease', 'Late Blight Disease', 'Healthy']
+
 # target image size
 target_size = (width, height)
 
@@ -30,14 +32,35 @@ def analyze_potato_leaf(file_directory):
     img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)  # calling the model
 
+    valueList = list(prediction[0])
+    maximumValue = max(valueList)
+    indexOfMax = valueList.index(maximumValue)
+
+    # values to be returned by API
+    maximumValue = maximumValue*100
+    predictedDisease = "Unidentified Image"
+    diseasePercentage = "Unidentified Percentage"
+    diseaseWithMaxPercentage = diseases[indexOfMax]
+
+    # only returns values with more than 65% accuracy
+    if maximumValue >= 65:
+        predictedDisease = diseases[indexOfMax]
+        diseasePercentage = str(maximumValue)
+
     output = {
         'prediction': {
-            'healthy': str(prediction[0][1]),
-            'early': str(prediction[0][0]),
-            'late': str(prediction[0][2])
+            'Early Blight Disease': str(prediction[0][0]*100),
+            'Late Blight Disease': str(prediction[0][1]*100),
+            'Healthy Leaf': str(prediction[0][2]*100)
         },
 
-        'original': str(prediction)
+        'original': str(valueList),
+        "maximumPercentage": str(maximumValue),
+        "identified": str(predictedDisease),
+        "identifiedPercentage": diseasePercentage,
+        "itemWithMaxPercentage": str(diseaseWithMaxPercentage),
+        "type": "disease",
+        "varient": "potato"
     }
 
     return output

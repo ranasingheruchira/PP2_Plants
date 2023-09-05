@@ -33,23 +33,23 @@ export default function InputForm() {
   const imageAddHandler = function (event) {
     let filePath = event.target.value.split("\\");
     let fileName = filePath[filePath.length - 1];
-    // console.log(fileName);
     changeFileName(fileName);
   };
 
+  //used to change the url path(potato,cucumber,weed)
   const onRadioChange = function (event) {
-    // console.log(event.target.value);
     changeRadioURL(event.target.value);
   };
 
   return (
     <div id="input_form_div">
-      <PopUpDialog
-        isOpen={isSumbitted}
-        changeIsOpen={changeIsSubmitted}
-        data={data}
-      />
-
+      {isSumbitted && (
+        <PopUpDialog
+          isOpen={isSumbitted}
+          changeIsOpen={changeIsSubmitted}
+          data={data}
+        />
+      )}
       <form onSubmit={onSubmit}>
         <label className={styles.form_label}>Detection Type :</label>
         <br />
