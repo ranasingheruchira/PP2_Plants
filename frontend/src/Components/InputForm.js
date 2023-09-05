@@ -12,13 +12,14 @@ export default function InputForm() {
   //state of the components
   const [isSumbitted, changeIsSubmitted] = useState(false);
   const [fileName, changeFileName] = useState("Click to Add Image");
+  const [radioURL, changeRadioURL] = useState("potato");
 
   //form submit handler
   const onSubmit = function (event) {
     event.preventDefault();
     const formData = new FormData();
     formData.append("img", imageInput.current.files[0]);
-    upload(formData, changePredictionData);
+    upload(formData, radioURL, changePredictionData);
   };
 
   //this is used to change the data in the pop up message
@@ -37,7 +38,8 @@ export default function InputForm() {
   };
 
   const onRadioChange = function (event) {
-    console.log("changed");
+    // console.log(event.target.value);
+    changeRadioURL(event.target.value);
   };
 
   return (
@@ -56,17 +58,32 @@ export default function InputForm() {
         <div className={styles.radio_group}>
           <label className={styles.container}>
             Potato
-            <input type="radio" name="radio" onChange={onRadioChange} />
+            <input
+              type="radio"
+              name="radio"
+              onChange={onRadioChange}
+              value="potato"
+            />
             <span className={styles.checkmark}></span>
           </label>
           <label className={styles.container}>
             Cucumber
-            <input type="radio" name="radio" onChange={onRadioChange} />
+            <input
+              type="radio"
+              name="radio"
+              onChange={onRadioChange}
+              value="cucumber"
+            />
             <span className={styles.checkmark}></span>
           </label>
           <label className={styles.container}>
             Weed
-            <input type="radio" name="radio" onChange={onRadioChange} />
+            <input
+              type="radio"
+              name="radio"
+              onChange={onRadioChange}
+              value="weed"
+            />
             <span className={styles.checkmark}></span>
           </label>
         </div>
