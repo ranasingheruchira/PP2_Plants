@@ -14,7 +14,7 @@
   margin-top: 10px;
   padding-top: 20px;
   margin-left: 200px;
-  border-color: red;
+  border-color: white;
 }
 
 .form_label {
@@ -39,11 +39,11 @@
   height: 50px;
   width: 300px;
   border-style: none;
-  background-color: rgb(255, 0, 0);
+  background-color: orange;
   margin-left: 55%;
   margin-bottom: 30px;
   border-radius: 30px;
-  color: white;
+  color: black;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -79,18 +79,18 @@
   width: 40px;
   background-color: #ffffff;
   border-style: solid;
-  border-color: rgb(255, 0, 0);
+  border-color: white;
   border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: red;
+  background-color: orange;
 }
 
 /* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: red;
+  background-color: orange;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -112,5 +112,5 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: white;
+  background: orange;
 }

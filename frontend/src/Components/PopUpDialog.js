@@ -34,9 +34,11 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
         aria-labelledby="customized-dialog-title"
         open={isOpen}
       >
+        {/* Pop Up Title */}
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           Prediction Results
         </DialogTitle>
+        {/* Close Button */}
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -49,7 +51,7 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
         >
           <CloseIcon />
         </IconButton>
-
+        {/* Pop Up Content */}
         <DialogContent dividers sx={{ backgroundColor: "#7af5c0" }}>
           <h1>Image Identified As :</h1>
           <Typography gutterBottom variant="h5">
@@ -57,6 +59,8 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
               <li>{data.identified}</li>
             </ul>
           </Typography>
+          {/* displays percentage of identified image.
+                displays "unidentified if not recognized" */}
           <h1>Identification Percentage :</h1>
           <Typography gutterBottom variant="h5">
             <ul>
@@ -67,9 +71,11 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
               </li>
             </ul>
           </Typography>
+          {/* display all percentages */}
           <h1>Other Posibilities :</h1>
           <Typography gutterBottom variant="h5">
             <ul>
+              {/* display the list of percentages */}
               {percentages.map((item) => {
                 return (
                   <li key={item[0]}>
@@ -81,6 +87,7 @@ export default function PopUpDialog({ isOpen, changeIsOpen, data }) {
           </Typography>
         </DialogContent>
         <DialogActions>
+          {/* pop up close button */}
           <Button autoFocus onClick={handleClose}>
             Close
           </Button>
