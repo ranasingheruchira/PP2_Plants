@@ -33,12 +33,11 @@ export default function InputForm() {
   const imageAddHandler = function (event) {
     let filePath = event.target.value.split("\\");
     let fileName = filePath[filePath.length - 1];
-    // console.log(fileName);
     changeFileName(fileName);
   };
 
+  //used to change the url path(potato,cucumber,weed)
   const onRadioChange = function (event) {
-    // console.log(event.target.value);
     changeRadioURL(event.target.value);
   };
 
